@@ -171,7 +171,7 @@ class GenreView(Resource):
         return genre_schema.dump(genre), 204
 
     def delete(self, gid):
-        genre = Genre.query(gid)
+        genre = Genre.query.get(gid)
         if not genre:
             return "", 404
         db.session.delete(genre)
